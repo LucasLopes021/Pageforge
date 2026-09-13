@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>PageForge — Admin</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1">
+
+<title>PageForge — Painel</title>
 
 <style>
+
 *{
   box-sizing:border-box;
 }
@@ -36,7 +41,7 @@ header{
 }
 
 main{
-  max-width:900px;
+  max-width:1000px;
   margin:35px auto;
   padding:0 20px;
 }
@@ -47,6 +52,15 @@ main{
   border-radius:18px;
   padding:22px;
   margin-bottom:20px;
+}
+
+.login{
+  max-width:450px;
+  margin:80px auto;
+}
+
+.hidden{
+  display:none;
 }
 
 h1{
@@ -96,19 +110,44 @@ button{
   margin-top:18px;
 }
 
-.danger{
-  background:#dc2626;
-  color:white;
-}
-
 .secondary{
   background:#202b49;
   color:#dce3ff;
 }
 
+.danger{
+  background:#dc2626;
+  color:white;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.stat{
+  background:#11182b;
+  border:1px solid #263352;
+  border-radius:15px;
+  padding:20px;
+}
+
+.stat-number{
+  font-size:28px;
+  font-weight:800;
+  margin-top:8px;
+}
+
+.stat-label{
+  color:#9eabc8;
+  font-size:13px;
+}
+
 .products{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:15px;
 }
 
@@ -121,7 +160,7 @@ button{
 
 .product img{
   width:100%;
-  height:170px;
+  height:180px;
   object-fit:contain;
   background:white;
 }
@@ -130,12 +169,1109 @@ button{
   padding:15px;
 }
 
+.platform{
+  color:#8f9bb8;
+  font-size:12px;
+}
+
+.product h3{
+  margin:8px 0;
+}
+
 .price{
   font-size:20px;
   font-weight:bold;
   margin:10px 0;
 }
 
+.category{
+  display:inline-block;
+  background:#202b49;
+  color:#aab6d4;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:11px;
+}
+
+.sales{
+  margin-top:10px;
+  color:#4ade80;
+  font-size:13px;
+  font-weight:bold;
+}
+
 .actions{
   display:flex;
-  gap:8
+  gap:8px;
+  margin-top:14px;
+}
+
+.actions button{
+  flex:1;
+}
+
+.error{
+  color:#ff6b6b;
+  font-size:13px;
+  margin-top:10px;
+}
+
+.success{
+  color:#4ade80;
+  font-size:13px;
+  margin-top:10px;
+}
+
+.empty{
+  color:#9eabc8;
+  text-align:center;
+  padding:30px;
+  border:1px dashed #33405f;
+  border-radius:12px;
+}
+
+@media(max-width:600px){
+
+  header{
+    padding:18px 5%;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    Page<span>Forge</span>
+  </div>
+
+  <button
+    class="secondary"
+    onclick="logout()">
+    Sair
+  </button>
+
+</header>
+
+
+<main>
+
+
+<!-- LOGIN -->
+
+<section
+  id="login"
+  class="card login">
+
+  <h1>Painel administrativo</h1>
+
+  <p style="color:#9eabc8">
+    Área privada para organizar seus produtos.
+  </p>
+
+  <label>Senha</label>
+
+  <input
+    id="password"
+    type="password"
+    placeholder="Digite sua senha">
+
+  <button
+    class="primary"
+    onclick="login()">
+    Entrar
+  </button>
+
+  <div
+    id="loginError"
+    class="error">
+  </div>
+
+</section>
+
+
+<!-- PAINEL -->
+
+<section
+  id="admin"
+  class="hidden">
+
+
+<!-- ESTATÍSTICAS -->
+
+<div class="stats">
+
+  <div class="stat">
+
+    <div class="stat-label">
+      Produtos cadastrados
+    </div>
+
+    <div
+      id="totalProducts"
+      class="stat-number">
+      0
+    </div>
+
+  </div>
+
+
+  <div class="stat">
+
+    <div class="stat-label">
+      Vendas registradas
+    </div>
+
+    <div
+      id="totalSales"
+      class="stat-number">
+      0
+    </div>
+
+  </div>
+
+
+  <div class="stat">
+
+    <div class="stat-label">
+      Categorias
+    </div>
+
+    <div
+      id="totalCategories"
+      class="stat-number">
+      0
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- CADASTRO -->
+
+<div class="card">
+
+  <h1 id="formTitle">
+    Cadastrar produto
+  </h1>
+
+  <p style="color:#9eabc8">
+    Cadastre e organize seus produtos.
+  </p>
+
+
+  <label>Loja</label>
+
+  <select id="platform">
+
+    <option value="Mercado Livre">
+      Mercado Livre
+    </option>
+
+    <option value="Shopee">
+      Shopee
+    </option>
+
+    <option value="Amazon">
+      Amazon
+    </option>
+
+    <option value="SHEIN">
+      SHEIN
+    </option>
+
+    <option value="Outra">
+      Outra
+    </option>
+
+  </select>
+
+
+  <label>Categoria</label>
+
+  <input
+    id="category"
+    placeholder="Ex.: Cabelo, Celular, Casa">
+
+
+  <label>Nome do produto</label>
+
+  <input
+    id="name"
+    placeholder="Nome do produto">
+
+
+  <label>Imagem do produto</label>
+
+  <input
+    id="image"
+    placeholder="Cole o link da imagem">
+
+
+  <label>Preço</label>
+
+  <input
+    id="price"
+    placeholder="Ex.: R$ 49,90">
+
+
+  <label>Descrição</label>
+
+  <textarea
+    id="description"
+    placeholder="Descrição do produto"></textarea>
+
+
+  <label>Link do produto / afiliado</label>
+
+  <input
+    id="link"
+    placeholder="Cole o link do produto">
+
+
+  <label>Vendas registradas</label>
+
+  <input
+    id="sales"
+    type="number"
+    min="0"
+    value="0"
+    placeholder="0">
+
+
+  <button
+    id="saveButton"
+    class="primary"
+    onclick="saveProduct()">
+
+    Adicionar produto
+
+  </button>
+
+
+  <button
+    id="cancelButton"
+    class="secondary hidden"
+    style="width:100%;margin-top:10px"
+    onclick="cancelEdit()">
+
+    Cancelar edição
+
+  </button>
+
+
+  <div
+    id="message">
+  </div>
+
+</div>
+
+
+<!-- PRODUTOS -->
+
+<div class="card">
+
+  <h2>
+    Produtos cadastrados
+  </h2>
+
+  <div
+    id="products"
+    class="products">
+  </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<script>
+
+
+/*
+========================================
+CONFIGURAÇÃO
+========================================
+*/
+
+const ADMIN_PASSWORD = "123456";
+
+let editingId = null;
+
+
+/*
+========================================
+LOGIN
+========================================
+*/
+
+function login(){
+
+  const password =
+    document.getElementById("password").value;
+
+  if(password === ADMIN_PASSWORD){
+
+    sessionStorage.setItem(
+      "pageforge_admin",
+      "true"
+    );
+
+    showAdmin();
+
+  }else{
+
+    document.getElementById(
+      "loginError"
+    ).textContent =
+      "Senha incorreta.";
+
+  }
+
+}
+
+
+/*
+========================================
+MOSTRAR PAINEL
+========================================
+*/
+
+function showAdmin(){
+
+  document
+    .getElementById("login")
+    .classList.add("hidden");
+
+  document
+    .getElementById("admin")
+    .classList.remove("hidden");
+
+  renderProducts();
+
+}
+
+
+/*
+========================================
+SAIR
+========================================
+*/
+
+function logout(){
+
+  sessionStorage.removeItem(
+    "pageforge_admin"
+  );
+
+  location.reload();
+
+}
+
+
+/*
+========================================
+PEGAR PRODUTOS
+========================================
+*/
+
+function getProducts(){
+
+  return JSON.parse(
+    localStorage.getItem(
+      "pageforge_products"
+    ) || "[]"
+  );
+
+}
+
+
+/*
+========================================
+SALVAR PRODUTOS
+========================================
+*/
+
+function saveProducts(products){
+
+  localStorage.setItem(
+    "pageforge_products",
+    JSON.stringify(products)
+  );
+
+}
+
+
+/*
+========================================
+SALVAR PRODUTO
+========================================
+*/
+
+function saveProduct(){
+
+  const platform =
+    document.getElementById(
+      "platform"
+    ).value;
+
+  const category =
+    document.getElementById(
+      "category"
+    ).value.trim();
+
+  const name =
+    document.getElementById(
+      "name"
+    ).value.trim();
+
+  const image =
+    document.getElementById(
+      "image"
+    ).value.trim();
+
+  const price =
+    document.getElementById(
+      "price"
+    ).value.trim();
+
+  const description =
+    document.getElementById(
+      "description"
+    ).value.trim();
+
+  const link =
+    document.getElementById(
+      "link"
+    ).value.trim();
+
+  const sales =
+    Number(
+      document.getElementById(
+        "sales"
+      ).value
+    ) || 0;
+
+
+  if(
+    !name ||
+    !image ||
+    !price ||
+    !link
+  ){
+
+    showMessage(
+      "Preencha nome, imagem, preço e link.",
+      false
+    );
+
+    return;
+
+  }
+
+
+  const products =
+    getProducts();
+
+
+  /*
+  EDITAR
+  */
+
+  if(editingId !== null){
+
+    const index =
+      products.findIndex(
+        product =>
+          product.id === editingId
+      );
+
+
+    if(index !== -1){
+
+      products[index] = {
+
+        id:editingId,
+
+        platform,
+
+        category,
+
+        name,
+
+        image,
+
+        price,
+
+        description,
+
+        link,
+
+        sales
+
+      };
+
+    }
+
+
+    editingId = null;
+
+
+    document.getElementById(
+      "saveButton"
+    ).textContent =
+      "Adicionar produto";
+
+
+    document.getElementById(
+      "formTitle"
+    ).textContent =
+      "Cadastrar produto";
+
+
+    document.getElementById(
+      "cancelButton"
+    ).classList.add(
+      "hidden"
+    );
+
+  }
+
+
+  /*
+  NOVO PRODUTO
+  */
+
+  else{
+
+    products.push({
+
+      id:Date.now(),
+
+      platform,
+
+      category,
+
+      name,
+
+      image,
+
+      price,
+
+      description,
+
+      link,
+
+      sales
+
+    });
+
+  }
+
+
+  saveProducts(products);
+
+  clearForm();
+
+  renderProducts();
+
+  showMessage(
+    "Produto salvo com sucesso!",
+    true
+  );
+
+}
+
+
+/*
+========================================
+EDITAR PRODUTO
+========================================
+*/
+
+function editProduct(id){
+
+  const products =
+    getProducts();
+
+
+  const product =
+    products.find(
+      p => p.id === id
+    );
+
+
+  if(!product) return;
+
+
+  document.getElementById(
+    "platform"
+  ).value =
+    product.platform || "Mercado Livre";
+
+
+  document.getElementById(
+    "category"
+  ).value =
+    product.category || "";
+
+
+  document.getElementById(
+    "name"
+  ).value =
+    product.name || "";
+
+
+  document.getElementById(
+    "image"
+  ).value =
+    product.image || "";
+
+
+  document.getElementById(
+    "price"
+  ).value =
+    product.price || "";
+
+
+  document.getElementById(
+    "description"
+  ).value =
+    product.description || "";
+
+
+  document.getElementById(
+    "link"
+  ).value =
+    product.link || "";
+
+
+  document.getElementById(
+    "sales"
+  ).value =
+    product.sales || 0;
+
+
+  editingId = id;
+
+
+  document.getElementById(
+    "saveButton"
+  ).textContent =
+    "Salvar alterações";
+
+
+  document.getElementById(
+    "formTitle"
+  ).textContent =
+    "Editar produto";
+
+
+  document.getElementById(
+    "cancelButton"
+  ).classList.remove(
+    "hidden"
+  );
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/*
+========================================
+CANCELAR EDIÇÃO
+========================================
+*/
+
+function cancelEdit(){
+
+  editingId = null;
+
+  clearForm();
+
+
+  document.getElementById(
+    "saveButton"
+  ).textContent =
+    "Adicionar produto";
+
+
+  document.getElementById(
+    "formTitle"
+  ).textContent =
+    "Cadastrar produto";
+
+
+  document.getElementById(
+    "cancelButton"
+  ).classList.add(
+    "hidden"
+  );
+
+}
+
+
+/*
+========================================
+EXCLUIR PRODUTO
+========================================
+*/
+
+function deleteProduct(id){
+
+  if(
+    !confirm(
+      "Tem certeza que deseja excluir este produto?"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  const products =
+    getProducts().filter(
+      product =>
+        product.id !== id
+    );
+
+
+  saveProducts(products);
+
+  renderProducts();
+
+  showMessage(
+    "Produto excluído.",
+    true
+  );
+
+}
+
+
+/*
+========================================
+RENDERIZAR PRODUTOS
+========================================
+*/
+
+function renderProducts(){
+
+  const area =
+    document.getElementById(
+      "products"
+    );
+
+
+  const products =
+    getProducts();
+
+
+  area.innerHTML = "";
+
+
+  /*
+  ESTATÍSTICAS
+  */
+
+  const totalSales =
+    products.reduce(
+      (total, product) =>
+        total +
+        (Number(product.sales) || 0),
+      0
+    );
+
+
+  const categories =
+    new Set(
+      products
+        .map(product => product.category)
+        .filter(Boolean)
+    );
+
+
+  document.getElementById(
+    "totalProducts"
+  ).textContent =
+    products.length;
+
+
+  document.getElementById(
+    "totalSales"
+  ).textContent =
+    totalSales;
+
+
+  document.getElementById(
+    "totalCategories"
+  ).textContent =
+    categories.size;
+
+
+  /*
+  NENHUM PRODUTO
+  */
+
+  if(products.length === 0){
+
+    area.innerHTML = `
+      <div class="empty">
+        Nenhum produto cadastrado ainda.
+      </div>
+    `;
+
+    return;
+
+  }
+
+
+  /*
+  PRODUTOS
+  */
+
+  products.forEach(product => {
+
+    const div =
+      document.createElement(
+        "div"
+      );
+
+
+    div.className =
+      "product";
+
+
+    div.innerHTML = `
+
+      <img
+        src="${esc(product.image)}"
+        alt="${esc(product.name)}"
+        onerror="
+          this.src='https://via.placeholder.com/600x400?text=Produto'
+        "
+      >
+
+
+      <div class="info">
+
+        <div class="platform">
+          ${esc(product.platform)}
+        </div>
+
+
+        <h3>
+          ${esc(product.name)}
+        </h3>
+
+
+        ${
+          product.category
+          ?
+          `
+          <span class="category">
+            ${esc(product.category)}
+          </span>
+          `
+          :
+          ""
+        }
+
+
+        <div class="price">
+          ${esc(product.price)}
+        </div>
+
+
+        <div class="sales">
+          🛒 ${Number(product.sales) || 0}
+          venda(s) registrada(s)
+        </div>
+
+
+        <div class="actions">
+
+          <button
+            class="secondary"
+            onclick="
+              editProduct(${product.id})
+            ">
+
+            Editar
+
+          </button>
+
+
+          <button
+            class="danger"
+            onclick="
+              deleteProduct(${product.id})
+            ">
+
+            Excluir
+
+          </button>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    area.appendChild(div);
+
+  });
+
+}
+
+
+/*
+========================================
+LIMPAR FORMULÁRIO
+========================================
+*/
+
+function clearForm(){
+
+  document.getElementById(
+    "category"
+  ).value = "";
+
+
+  document.getElementById(
+    "name"
+  ).value = "";
+
+
+  document.getElementById(
+    "image"
+  ).value = "";
+
+
+  document.getElementById(
+    "price"
+  ).value = "";
+
+
+  document.getElementById(
+    "description"
+  ).value = "";
+
+
+  document.getElementById(
+    "link"
+  ).value = "";
+
+
+  document.getElementById(
+    "sales"
+  ).value = "0";
+
+}
+
+
+/*
+========================================
+MENSAGEM
+========================================
+*/
+
+function showMessage(
+  text,
+  success
+){
+
+  const message =
+    document.getElementById(
+      "message"
+    );
+
+
+  message.textContent =
+    text;
+
+
+  message.className =
+    success
+    ? "success"
+    : "error";
+
+
+  setTimeout(() => {
+
+    message.textContent = "";
+
+  },3000);
+
+}
+
+
+/*
+========================================
+SEGURANÇA BÁSICA DE TEXTO
+========================================
+*/
+
+function esc(text){
+
+  return String(text).replace(
+    /[&<>"']/g,
+
+    function(char){
+
+      return {
+
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#39;"
+
+      }[char];
+
+    }
+
+  );
+
+}
+
+
+/*
+========================================
+VERIFICAR LOGIN
+========================================
+*/
+
+if(
+  sessionStorage.getItem(
+    "pageforge_admin"
+  ) === "true"
+){
+
+  showAdmin();
+
+}
+
+</script>
+
+</body>
+
+</html>
