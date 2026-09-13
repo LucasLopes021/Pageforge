@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PageForge — Criador de Páginas</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#0b1020;color:#eef2ff}
+header{padding:22px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #202a45}
+.logo{font-size:22px;font-weight:800}.logo span{color:#6d7cff}
+.badge{font-size:12px;padding:7px 11px;border:1px solid #33405f;border-radius:99px;color:#aab6d4}
+main{max-width:1250px;margin:35px auto;padding:0 20px}
+.hero h1{font-size:42px;margin:0 0 10px}.hero p{color:#9eabc8;margin:0 0 28px}
+.grid{display:grid;grid-template-columns:380px 1fr;gap:22px}
+.card{background:#11182b;border:1px solid #263352;border-radius:18px;padding:20px}
+label{display:block;font-size:13px;color:#aab6d4;margin:15px 0 7px}
+input,textarea,select{width:100%;background:#0b1120;border:1px solid #33405f;color:#fff;border-radius:10px;padding:12px;font-size:14px;outline:none}
+textarea{min-height:90px;resize:vertical}
+button{border:0;border-radius:10px;padding:12px 15px;font-weight:700;cursor:pointer}
+.primary{background:#6d7cff;color:white;width:100%;margin-top:17px}.secondary{background:#202b49;color:#dce3ff;margin-right:8px}
+.preview{background:#f4f6fb;color:#172033;border-radius:14px;min-height:590px;overflow:hidden}
+.top{padding:13px 20px;background:white;border-bottom:1px solid #e5e8ef;font-size:13px;color:#667085}
+.product{max-width:680px;margin:35px auto;padding:0 25px;text-align:center}
+.market{display:inline-block;padding:6px 10px;border-radius:99px;background:#eef0ff;color:#4d5bd6;font-size:12px;font-weight:700}
+.product h2{font-size:34px;margin:14px 0 10px}.desc{color:#667085;line-height:1.6}
+.product img{width:100%;max-width:420px;height:230px;object-fit:contain;background:white;border-radius:14px;margin:18px auto}
+.price{font-size:30px;font-weight:800;margin:10px}.cta{display:inline-block;background:#16a34a;color:white;padding:15px 28px;border-radius:11px;font-weight:800;text-decoration:none}
+.features{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:20px 0}.feature{background:#fff;border:1px solid #e5e8ef;padding:9px 12px;border-radius:9px;font-size:12px}
+.footer{font-size:12px;color:#98a2b3;margin-top:25px}
+@media(max-width:850px){.grid{grid-template-columns:1fr}.hero h1{font-size:32px}}
+
+.platform{display:flex;flex-direction:column;gap:7px;text-decoration:none;color:#fff;background:#18223a;border:1px solid #33405f;border-radius:12px;padding:15px;transition:.15s}
+.platform:hover{transform:translateY(-2px);border-color:#6d7cff}
+.platform span{font-size:12px;color:#9eabc8}
+</style>
+</head>
+<body>
+<header><div class="logo">Page<span>Forge</span></div><div class="badge">Criador de páginas • grátis</div></header>
+<main>
+<section class="hero"><h1>Crie páginas que vendem.</h1><p>Monte uma página de produto para Mercado Livre, Shopee, SHEIN e outras plataformas em poucos minutos.</p></section>
+<div class="grid">
+<section class="card">
+<label>Plataforma</label>
+<select id="market"><option>Mercado Livre</option><option>Shopee</option><option>SHEIN</option><option>Amazon</option><option>Outra</option></select>
+<label>Nome do produto</label><input id="name" value="Produto incrível">
+<label>Imagem do produto</label><input id="img" value="https://via.placeholder.com/700x400?text=Seu+Produto">
+<label>Preço</label><input id="price" value="R$ 99,90">
+<label>Descrição</label><textarea id="desc">Uma descrição clara e convincente do produto. Destaque os principais benefícios para o comprador.</textarea>
+<label>Link de afiliado</label>
+<input id="link" value="https://www.mercadolivre.com.br/" placeholder="Cole aqui seu link de afiliado">
+<div id="affiliateHelp" style="font-size:12px;color:#8f9bb8;margin-top:7px;line-height:1.45">
+Cole o seu link de afiliado da plataforma escolhida. O botão “Ver oferta” da página levará o visitante para esse link.
+</div>
+<button class="primary" onclick="update()">Atualizar página</button>
+<div style="margin-top:18px"><button class="secondary" onclick="copyAffiliate()">Copiar link de afiliado</button><button class="secondary" onclick="copyHTML()">Copiar HTML</button><button class="secondary" onclick="downloadHTML()">Baixar HTML</button></div>
+</section>
+<section class="card"><div id="preview" class="preview"></div></section>
+</div>
+
+<section class="card" style="margin:22px 0">
+  <h2 style="margin-top:0">Central de links de afiliado</h2>
+  <p style="color:#9eabc8;line-height:1.5;margin-top:0">
+    Acesse rapidamente o programa de cada plataforma, gere seu link e cole no campo “Link de afiliado” acima.
+  </p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px">
+    <a class="platform" href="https://www.mercadolivre.com.br/l/afiliados-portal-do-afiliado" target="_blank">
+      <b>Mercado Livre</b><span>Portal do Afiliado →</span>
+    </a>
+    <a class="platform" href="https://shopee.com.br/m/afiliados" target="_blank">
+      <b>Shopee</b><span>Programa de Afiliados →</span>
+    </a>
+    <a class="platform" href="https://br.shein.com/" target="_blank">
+      <b>SHEIN</b><span>Acesse a SHEIN →</span>
+    </a>
+    <a class="platform" href="https://associados.amazon.com.br/welcome" target="_blank">
+      <b>Amazon</b><span>Portal de Associados →</span>
+    </a>
+  </div>
+  <div style="margin-top:15px;padding:13px;border:1px solid #263352;border-radius:12px;background:#0b1120">
+    <b style="font-size:13px">Como funciona</b>
+    <p style="font-size:12px;color:#9eabc8;line-height:1.5;margin-bottom:0">
+      1. Entre no programa de afiliados da plataforma.<br>
+      2. Encontre o produto que quer divulgar.<br>
+      3. Gere o seu link personalizado de afiliado.<br>
+      4. Cole o link no criador de páginas e publique.
+    </p>
+  </div>
+</section>
+
+<div class="footer">Use somente links e imagens que você tenha autorização para divulgar. O PageForge é um gerador de páginas e não é afiliado ao Mercado Livre, Shopee ou SHEIN.</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+function data(){return{market:$('market').value,name:$('name').value,img:$('img').value,price:$('price').value,desc:$('desc').value,link:$('link').value}}
+function page(d){
+return `<div class="top">PageForge • Página de produto</div><div class="product"><span class="market">${d.market}</span><h2>${esc(d.name)}</h2><img src="${esc(d.img)}" alt="${esc(d.name)}"><p class="desc">${esc(d.desc)}</p><div class="features"><span class="feature">Compra segura</span><span class="feature">Produto selecionado</span><span class="feature">Confira a oferta</span></div><div class="price">${esc(d.price)}</div><a class="cta" href="${esc(d.link)}" target="_blank" rel="noopener">Ver oferta</a><p class="footer">Ao clicar, o visitante será direcionado pelo seu link de afiliado.</p></div>`
+}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function update(){$('preview').innerHTML=page(data())}
+function updateAffiliateHelp(){
+  const p=$('market').value;
+  const messages={
+    'Mercado Livre':'Mercado Livre: cole aqui o seu link de afiliado gerado no programa de afiliados.',
+    'Shopee':'Shopee: cole aqui o seu link de afiliado gerado no programa de afiliados.',
+    'SHEIN':'SHEIN: cole aqui o seu link de afiliado/indicação gerado pela plataforma.',
+    'Amazon':'Amazon: cole aqui o seu link de afiliado do programa de associados.',
+    'Outra':'Cole aqui o seu link de afiliado da plataforma escolhida.'
+  };
+  $('affiliateHelp').textContent=messages[p]||messages['Outra'];
+  update();
+}
+$('market').addEventListener('change',updateAffiliateHelp);
+function fullHTML(){let d=data();return `<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(d.name)}</title><style>body{font-family:Arial;margin:0;background:#f4f6fb;color:#172033}.top{padding:15px 20px;background:#fff;border-bottom:1px solid #ddd}.product{max-width:700px;margin:35px auto;padding:25px;text-align:center}.product img{max-width:100%;height:300px;object-fit:contain;background:#fff;border-radius:15px}.market{display:inline-block;padding:7px 11px;border-radius:99px;background:#eef0ff}.desc{color:#667085;line-height:1.6}.price{font-size:30px;font-weight:800;margin:15px}.cta{display:inline-block;background:#16a34a;color:#fff;padding:15px 28px;border-radius:10px;text-decoration:none;font-weight:bold}
+.platform{display:flex;flex-direction:column;gap:7px;text-decoration:none;color:#fff;background:#18223a;border:1px solid #33405f;border-radius:12px;padding:15px;transition:.15s}
+.platform:hover{transform:translateY(-2px);border-color:#6d7cff}
+.platform span{font-size:12px;color:#9eabc8}
+</style></head><body>${page(d)}</body></html>`}
+async function copyAffiliate(){
+  await navigator.clipboard.writeText($('link').value);
+  alert('Link de afiliado copiado!');
+}
+async function copyHTML(){await navigator.clipboard.writeText(fullHTML());alert('HTML copiado!')}
+function downloadHTML(){let b=new Blob([fullHTML()],{type:'text/html'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='pagina-produto.html';a.click();URL.revokeObjectURL(a.href)}
+update();
+</script>
+</body></html>
