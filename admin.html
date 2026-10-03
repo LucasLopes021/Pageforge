@@ -1,45 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PageForge — Admin</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>PageForge — Painel Administrativo</title>
 
 <style>
 
+/* =========================================================
+   CONFIGURAÇÕES
+========================================================= */
+
 :root{
+
     --bg:#050509;
-    --bg2:#080812;
-    --card:#0d0d17;
-    --card2:#11111d;
-    --border:#242438;
+
+    --panel:#0d0d16;
+
+    --panel2:#11111d;
+
+    --border:#24243a;
 
     --text:#f5f5ff;
+
     --muted:#85859b;
 
     --purple:#8b5cf6;
-    --purple2:#6d28d9;
+
     --blue:#2563eb;
 
     --green:#22c55e;
+
     --red:#ef4444;
-    --orange:#f59e0b;
+
 }
+
 
 *{
+
     box-sizing:border-box;
+
 }
+
 
 html{
+
     scroll-behavior:smooth;
+
 }
 
+
 body{
+
     margin:0;
+
     min-height:100vh;
 
     background:
+
         radial-gradient(
             circle at 10% 0%,
             rgba(139,92,246,.20),
@@ -48,7 +73,7 @@ body{
 
         radial-gradient(
             circle at 90% 0%,
-            rgba(37,99,235,.16),
+            rgba(37,99,235,.18),
             transparent 30%
         ),
 
@@ -57,45 +82,48 @@ body{
     color:var(--text);
 
     font-family:
+
         Arial,
         Helvetica,
         sans-serif;
+
 }
 
-
-/* =========================
-   GERAL
-========================= */
 
 button,
 input,
 textarea,
 select{
+
     font-family:inherit;
+
 }
+
 
 button{
+
     cursor:pointer;
+
 }
+
 
 .hidden{
+
     display:none !important;
+
 }
 
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 header{
 
-    position:sticky;
+    height:70px;
 
-    top:0;
-
-    z-index:100;
-
-    height:72px;
+    padding:
+        0 5%;
 
     display:flex;
 
@@ -103,19 +131,22 @@ header{
 
     justify-content:space-between;
 
-    padding:
-        0
-        5%;
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
 
     background:
-        rgba(5,5,9,.86);
+        rgba(5,5,9,.90);
 
     backdrop-filter:
-        blur(16px);
+        blur(15px);
 
     border-bottom:
         1px solid
         rgba(255,255,255,.07);
+
 }
 
 
@@ -125,57 +156,54 @@ header{
 
     font-weight:900;
 
-    letter-spacing:-.5px;
 }
 
 
 .logo span{
 
-    color:
-        var(--purple);
+    color:var(--purple);
+
 }
 
 
-.header-buttons{
+.header-actions{
 
     display:flex;
 
     gap:8px;
+
 }
 
 
-.btn{
-
-    border:1px solid var(--border);
-
-    background:
-        var(--card2);
-
-    color:white;
+.button{
 
     padding:
-        10px
-        14px;
+        10px 14px;
 
     border-radius:10px;
 
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        var(--panel2);
+
+    color:white;
+
     font-weight:700;
 
-    transition:.2s;
 }
 
 
-.btn:hover{
+.button:hover{
 
-    transform:
-        translateY(-1px);
+    filter:brightness(1.15);
 
-    border-color:
-        #3a3a55;
 }
 
 
-.btn-primary{
+.button-primary{
 
     background:
         linear-gradient(
@@ -185,64 +213,47 @@ header{
         );
 
     border:none;
+
 }
 
 
-.btn-danger{
+.button-danger{
+
+    color:#ff8b8b;
 
     background:
         rgba(239,68,68,.10);
 
-    color:#ff8d8d;
-
     border-color:
         rgba(239,68,68,.30);
+
 }
 
 
-/* =========================
-   CONTAINER
-========================= */
-
-.container{
-
-    width:
-        min(1200px, calc(100% - 40px));
-
-    margin:
-        auto;
-
-    padding:
-        35px 0 70px;
-}
-
-
-/* =========================
+/* =========================================================
    LOGIN
-========================= */
+========================================================= */
 
-.login-wrapper{
+.login-screen{
 
     min-height:
-        calc(100vh - 72px);
+        calc(100vh - 70px);
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
 
+    justify-content:center;
+
     padding:20px;
+
 }
 
 
-.login-box{
+.login-card{
 
     width:
         min(430px,100%);
-
-    padding:
-        30px;
 
     background:
         linear-gradient(
@@ -255,20 +266,22 @@ header{
         1px solid
         var(--border);
 
-    border-radius:
-        22px;
+    border-radius:22px;
+
+    padding:30px;
 
     box-shadow:
         0 30px 90px
         rgba(0,0,0,.45);
+
 }
 
 
 .login-icon{
 
-    width:60px;
+    width:58px;
 
-    height:60px;
+    height:58px;
 
     display:flex;
 
@@ -288,52 +301,48 @@ header{
     font-size:28px;
 
     margin-bottom:20px;
+
 }
 
 
-.login-box h1{
+.login-card h1{
 
     margin:
         0 0 8px;
 
     font-size:27px;
+
 }
 
 
-.login-box p{
-
-    color:
-        var(--muted);
-
-    line-height:
-        1.6;
+.login-card p{
 
     margin:
-        0 0 25px;
+        0 0 24px;
+
+    color:var(--muted);
+
+    line-height:1.5;
+
 }
 
 
-/* =========================
+/* =========================================================
    INPUTS
-========================= */
+========================================================= */
 
-.field{
-
-    margin-top:16px;
-}
-
-
-.field label{
+label{
 
     display:block;
+
+    margin-bottom:7px;
+
+    color:#aaaabd;
 
     font-size:12px;
 
     font-weight:700;
 
-    color:#aaaabd;
-
-    margin-bottom:7px;
 }
 
 
@@ -343,31 +352,20 @@ select{
 
     width:100%;
 
+    padding:13px;
+
+    background:#08080e;
+
+    color:white;
+
     border:
         1px solid
         #292940;
 
-    background:
-        #08080e;
-
-    color:white;
-
-    border-radius:
-        11px;
-
-    padding:
-        13px;
+    border-radius:11px;
 
     outline:none;
 
-    transition:.2s;
-}
-
-
-input::placeholder,
-textarea::placeholder{
-
-    color:#56566b;
 }
 
 
@@ -381,26 +379,39 @@ select:focus{
     box-shadow:
         0 0 0 3px
         rgba(139,92,246,.12);
+
 }
 
 
 textarea{
 
-    min-height:
-        110px;
+    min-height:110px;
 
-    resize:
-        vertical;
+    resize:vertical;
+
 }
 
 
-.login-button{
+.field{
+
+    margin-top:15px;
+
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+========================================================= */
+
+#loginButton{
 
     width:100%;
 
+    padding:14px;
+
     margin-top:18px;
 
-    padding:14px;
+    border:0;
 
     border-radius:11px;
 
@@ -415,53 +426,73 @@ textarea{
             var(--blue)
         );
 
-    border:none;
 }
 
 
-.error{
+#loginButton:active{
+
+    transform:scale(.99);
+
+}
+
+
+.login-error{
 
     color:#ff7070;
 
     font-size:13px;
 
     margin-top:10px;
+
 }
 
 
-/* =========================
-   DASHBOARD HEADER
-========================= */
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.container{
+
+    width:
+        min(1200px,calc(100% - 40px));
+
+    margin:auto;
+
+    padding:
+        35px 0 70px;
+
+}
+
 
 .dashboard-title{
 
-    margin-bottom:
-        25px;
+    margin-bottom:24px;
+
 }
 
 
 .dashboard-title h1{
 
     margin:
-        0 0 8px;
+        0 0 7px;
 
-    font-size:
-        32px;
+    font-size:32px;
+
 }
 
 
 .dashboard-title p{
 
-    color:
-        var(--muted);
-
     margin:0;
+
+    color:var(--muted);
+
 }
 
 
-/* =========================
+/* =========================================================
    STATS
-========================= */
+========================================================= */
 
 .stats{
 
@@ -472,15 +503,20 @@ textarea{
 
     gap:14px;
 
-    margin-bottom:
-        20px;
+    margin-bottom:20px;
+
 }
 
 
 .stat{
 
-    padding:
-        20px;
+    padding:20px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:17px;
 
     background:
         linear-gradient(
@@ -489,44 +525,34 @@ textarea{
             #09090f
         );
 
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        17px;
 }
 
 
 .stat-label{
 
-    color:
-        var(--muted);
+    color:var(--muted);
 
-    font-size:
-        12px;
+    font-size:12px;
 
-    font-weight:
-        700;
+    font-weight:700;
+
 }
 
 
 .stat-value{
 
-    font-size:
-        28px;
+    margin-top:8px;
 
-    font-weight:
-        900;
+    font-size:28px;
 
-    margin-top:
-        9px;
+    font-weight:900;
+
 }
 
 
-/* =========================
-   MAIN GRID
-========================= */
+/* =========================================================
+   MAIN
+========================================================= */
 
 .main-grid{
 
@@ -537,11 +563,18 @@ textarea{
 
     gap:18px;
 
-    align-items:start;
 }
 
 
 .card{
+
+    padding:22px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:18px;
 
     background:
         linear-gradient(
@@ -550,68 +583,48 @@ textarea{
             #09090f
         );
 
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        18px;
-
-    padding:
-        22px;
-
-    box-shadow:
-        0 15px 45px
-        rgba(0,0,0,.18);
 }
 
 
-.card-title{
+.card h2{
 
     margin:
         0 0 5px;
 
-    font-size:
-        20px;
 }
 
 
-.card-subtitle{
+.card-description{
 
-    color:
-        var(--muted);
+    color:var(--muted);
+
+    font-size:13px;
 
     margin:
         0 0 18px;
 
-    font-size:
-        13px;
 }
 
 
-/* =========================
-   FORM
-========================= */
+/* =========================================================
+   FORM BUTTONS
+========================================================= */
 
-.save-button{
+#saveButton{
 
     width:100%;
 
-    padding:
-        14px;
+    padding:14px;
 
-    margin-top:
-        18px;
+    margin-top:18px;
 
-    border-radius:
-        11px;
+    border:0;
 
-    border:none;
+    border-radius:11px;
 
     color:white;
 
-    font-weight:
-        800;
+    font-weight:800;
 
     background:
         linear-gradient(
@@ -619,80 +632,61 @@ textarea{
             var(--purple),
             var(--blue)
         );
+
 }
 
 
-.cancel-button{
+#cancelButton{
 
     width:100%;
 
-    padding:
-        12px;
+    padding:12px;
 
-    margin-top:
-        9px;
+    margin-top:9px;
 
-    border-radius:
-        11px;
+    border-radius:11px;
 
-    background:
-        var(--card2);
+    background:var(--panel2);
 
     color:white;
 
     border:
         1px solid
         var(--border);
+
 }
 
 
 .message{
 
-    margin-top:
-        12px;
+    margin-top:12px;
 
-    font-size:
-        13px;
+    font-size:13px;
 
-    font-weight:
-        700;
+    font-weight:700;
+
 }
 
 
-.message.success{
+.message-success{
 
-    color:
-        var(--green);
+    color:var(--green);
+
 }
 
 
-.message.error{
+.message-error{
 
-    color:
-        #ff6b6b;
+    color:#ff7070;
+
 }
 
 
-/* =========================
-   PRODUTOS
-========================= */
+/* =========================================================
+   PRODUCTS
+========================================================= */
 
-.products-header{
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:10px;
-
-    margin-bottom:
-        5px;
-}
-
-
-.products-grid{
+.products{
 
     display:grid;
 
@@ -704,8 +698,8 @@ textarea{
 
     gap:14px;
 
-    margin-top:
-        18px;
+    margin-top:18px;
+
 }
 
 
@@ -713,32 +707,14 @@ textarea{
 
     overflow:hidden;
 
-    background:
-        #08080e;
-
     border:
         1px solid
         var(--border);
 
-    border-radius:
-        15px;
+    border-radius:15px;
 
-    transition:
-        .2s;
-}
+    background:#08080e;
 
-
-.product:hover{
-
-    transform:
-        translateY(-3px);
-
-    border-color:
-        #363650;
-
-    box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.30);
 }
 
 
@@ -753,45 +729,39 @@ textarea{
     background:white;
 
     display:block;
+
 }
 
 
 .product-info{
 
-    padding:
-        15px;
+    padding:15px;
+
 }
 
 
 .platform{
 
-    color:
-        #9a9ab0;
+    color:#9999ae;
 
-    font-size:
-        10px;
+    font-size:10px;
 
-    font-weight:
-        800;
+    font-weight:800;
 
-    text-transform:
-        uppercase;
+    text-transform:uppercase;
 
-    letter-spacing:
-        .8px;
 }
 
 
 .product-name{
 
-    font-size:
-        16px;
-
     margin:
         7px 0;
 
-    line-height:
-        1.3;
+    font-size:16px;
+
+    font-weight:700;
+
 }
 
 
@@ -802,46 +772,36 @@ textarea{
     padding:
         5px 8px;
 
-    border-radius:
-        20px;
+    border-radius:20px;
 
     background:
         rgba(139,92,246,.12);
 
-    color:
-        #b99cff;
+    color:#b99cff;
 
-    font-size:
-        10px;
+    font-size:10px;
 
-    font-weight:
-        700;
 }
 
 
-.product-price{
-
-    font-size:
-        20px;
-
-    font-weight:
-        900;
+.price{
 
     margin:
         10px 0 5px;
+
+    font-size:20px;
+
+    font-weight:900;
+
 }
 
 
-.product-sales{
+.sales{
 
-    color:
-        #6ee7a0;
+    color:#6ee7a0;
 
-    font-size:
-        12px;
+    font-size:12px;
 
-    margin-top:
-        5px;
 }
 
 
@@ -851,8 +811,8 @@ textarea{
 
     gap:7px;
 
-    margin-top:
-        14px;
+    margin-top:14px;
+
 }
 
 
@@ -860,14 +820,12 @@ textarea{
 
     flex:1;
 
-    padding:
-        9px;
+    padding:9px;
 
-    border-radius:
-        9px;
+    border-radius:9px;
 
-    font-size:
-        12px;
+    font-size:12px;
+
 }
 
 
@@ -878,37 +836,37 @@ textarea{
 
     text-align:center;
 
-    padding:
-        45px 20px;
+    padding:45px 20px;
 
     border:
         1px dashed
         #34344b;
 
-    border-radius:
-        14px;
+    border-radius:14px;
 
-    color:
-        var(--muted);
+    color:var(--muted);
+
 }
 
 
-/* =========================
+/* =========================================================
    RESPONSIVO
-========================= */
+========================================================= */
 
 @media(max-width:950px){
 
     .main-grid{
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns:1fr;
+
     }
+
 
     .stats{
 
         grid-template-columns:
             repeat(2,1fr);
+
     }
 
 }
@@ -920,68 +878,72 @@ textarea{
 
         padding:
             0 18px;
+
     }
+
 
     .container{
 
         width:
             calc(100% - 24px);
 
-        padding-top:
-            25px;
+        padding-top:25px;
+
     }
+
 
     .stats{
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns:1fr;
+
     }
+
 
     .dashboard-title h1{
 
-        font-size:
-            26px;
-    }
+        font-size:26px;
 
-    .header-buttons .site-button{
-
-        display:none;
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- ==================================================
+<!-- ======================================================
      HEADER
-================================================== -->
+======================================================= -->
 
 <header>
 
     <div class="logo">
+
         Page<span>Forge</span>
+
     </div>
 
+
     <div
-        id="headerButtons"
-        class="header-buttons hidden"
+        id="headerActions"
+        class="header-actions hidden"
     >
 
         <button
-            class="btn site-button"
-            onclick="goToSite()"
+            id="siteButton"
+            class="button"
         >
             Ver site
         </button>
 
+
         <button
-            class="btn btn-danger"
-            onclick="logout()"
+            id="logoutButton"
+            class="button button-danger"
         >
             Sair
         </button>
@@ -992,24 +954,26 @@ textarea{
 
 
 
-<!-- ==================================================
+<!-- ======================================================
      LOGIN
-================================================== -->
+======================================================= -->
 
 <section
     id="loginScreen"
-    class="login-wrapper"
+    class="login-screen"
 >
 
-    <div class="login-box">
+    <div class="login-card">
 
         <div class="login-icon">
             ⚡
         </div>
 
+
         <h1>
             Painel administrativo
         </h1>
+
 
         <p>
             Acesse o painel do PageForge
@@ -1017,35 +981,34 @@ textarea{
             e ofertas.
         </p>
 
+
         <div class="field">
 
-            <label>
+            <label for="password">
                 SENHA
             </label>
 
             <input
-                id="loginPassword"
+                id="password"
                 type="password"
+                autocomplete="current-password"
                 placeholder="Digite sua senha"
-                onkeydown="
-                    if(event.key === 'Enter'){
-                        login();
-                    }
-                "
             >
 
         </div>
 
+
         <button
-            class="login-button"
-            onclick="login()"
+            id="loginButton"
+            type="button"
         >
             Entrar no painel
         </button>
 
+
         <div
             id="loginError"
-            class="error"
+            class="login-error"
         ></div>
 
     </div>
@@ -1054,9 +1017,9 @@ textarea{
 
 
 
-<!-- ==================================================
+<!-- ======================================================
      DASHBOARD
-================================================== -->
+======================================================= -->
 
 <main
     id="dashboard"
@@ -1071,8 +1034,7 @@ textarea{
         </h1>
 
         <p>
-            Gerencie todos os produtos
-            do PageForge em um só lugar.
+            Gerencie os produtos do PageForge.
         </p>
 
     </div>
@@ -1081,7 +1043,7 @@ textarea{
 
     <!-- ==================================================
          ESTATÍSTICAS
-    ================================================== -->
+    =================================================== -->
 
     <div class="stats">
 
@@ -1155,27 +1117,24 @@ textarea{
 
 
     <!-- ==================================================
-         GRID PRINCIPAL
-    ================================================== -->
+         CONTEÚDO
+    =================================================== -->
 
     <div class="main-grid">
 
 
-
         <!-- ==================================================
              FORMULÁRIO
-        ================================================== -->
+        =================================================== -->
 
         <div class="card">
 
-            <h2
-                id="formTitle"
-                class="card-title"
-            >
+            <h2 id="formTitle">
                 Novo produto
             </h2>
 
-            <p class="card-subtitle">
+
+            <p class="card-description">
                 Cadastre uma nova oferta.
             </p>
 
@@ -1223,7 +1182,6 @@ textarea{
 
                 <input
                     id="category"
-                    type="text"
                     placeholder="Ex.: Beleza"
                 >
 
@@ -1239,7 +1197,6 @@ textarea{
 
                 <input
                     id="name"
-                    type="text"
                     placeholder="Nome do produto"
                 >
 
@@ -1255,7 +1212,6 @@ textarea{
 
                 <input
                     id="image"
-                    type="url"
                     placeholder="https://..."
                 >
 
@@ -1271,7 +1227,6 @@ textarea{
 
                 <input
                     id="price"
-                    type="text"
                     placeholder="R$ 49,90"
                 >
 
@@ -1302,7 +1257,6 @@ textarea{
 
                 <input
                     id="link"
-                    type="url"
                     placeholder="https://..."
                 >
 
@@ -1329,22 +1283,19 @@ textarea{
 
             <button
                 id="saveButton"
-                class="save-button"
-                onclick="saveProduct()"
+                type="button"
             >
                 Adicionar produto
             </button>
 
 
-
             <button
                 id="cancelButton"
-                class="cancel-button hidden"
-                onclick="cancelEdit()"
+                type="button"
+                class="hidden"
             >
                 Cancelar edição
             </button>
-
 
 
             <div
@@ -1357,32 +1308,24 @@ textarea{
 
 
         <!-- ==================================================
-             LISTA DE PRODUTOS
-        ================================================== -->
+             PRODUTOS
+        =================================================== -->
 
         <div class="card">
 
-            <div class="products-header">
+            <h2>
+                Produtos cadastrados
+            </h2>
 
-                <div>
 
-                    <h2 class="card-title">
-                        Produtos
-                    </h2>
-
-                    <p class="card-subtitle">
-                        Produtos cadastrados no PageForge.
-                    </p>
-
-                </div>
-
-            </div>
-
+            <p class="card-description">
+                Gerencie suas ofertas.
+            </p>
 
 
             <div
                 id="products"
-                class="products-grid"
+                class="products"
             ></div>
 
         </div>
@@ -1396,26 +1339,24 @@ textarea{
 
 <script>
 
-
-/* ==================================================
-   CONFIGURAÇÕES
-================================================== */
+/* =========================================================
+   CONFIGURAÇÃO
+========================================================= */
 
 
 /*
-   SENHA DO PAINEL
-
-   Observação:
-   Esta senha está no código do navegador.
-   Para segurança real, futuramente devemos
-   trocar isso por Supabase Auth.
+   SENHA DO ADMIN
 */
 
 const ADMIN_PASSWORD =
     "199119122023";
 
 
-const STORAGE_KEY =
+/*
+   CHAVES DO NAVEGADOR
+*/
+
+const PRODUCTS_KEY =
     "pageforge_products";
 
 
@@ -1423,31 +1364,87 @@ const SESSION_KEY =
     "pageforge_admin";
 
 
-let editingId =
-    null;
+/*
+   PRODUTO SENDO EDITADO
+*/
+
+let editingId = null;
 
 
 
-/* ==================================================
+/* =========================================================
    ELEMENTOS
-================================================== */
+========================================================= */
 
-function $(id){
-
-    return document.getElementById(id);
-
-}
-
+const loginScreen =
+    document.getElementById(
+        "loginScreen"
+    );
 
 
-/* ==================================================
+const dashboard =
+    document.getElementById(
+        "dashboard"
+    );
+
+
+const headerActions =
+    document.getElementById(
+        "headerActions"
+    );
+
+
+const passwordInput =
+    document.getElementById(
+        "password"
+    );
+
+
+const loginButton =
+    document.getElementById(
+        "loginButton"
+    );
+
+
+const loginError =
+    document.getElementById(
+        "loginError"
+    );
+
+
+const logoutButton =
+    document.getElementById(
+        "logoutButton"
+    );
+
+
+const siteButton =
+    document.getElementById(
+        "siteButton"
+    );
+
+
+const saveButton =
+    document.getElementById(
+        "saveButton"
+    );
+
+
+const cancelButton =
+    document.getElementById(
+        "cancelButton"
+    );
+
+
+
+/* =========================================================
    LOGIN
-================================================== */
+========================================================= */
 
 function login(){
 
     const password =
-        $("loginPassword").value;
+        passwordInput.value;
 
 
     if(
@@ -1461,19 +1458,27 @@ function login(){
         );
 
 
-        $("loginScreen")
-            .classList
-            .add("hidden");
+        loginScreen.classList.add(
+            "hidden"
+        );
 
 
-        $("dashboard")
-            .classList
-            .remove("hidden");
+        dashboard.classList.remove(
+            "hidden"
+        );
 
 
-        $("headerButtons")
-            .classList
-            .remove("hidden");
+        headerActions.classList.remove(
+            "hidden"
+        );
+
+
+        loginError.textContent =
+            "";
+
+
+        passwordInput.value =
+            "";
 
 
         renderProducts();
@@ -1481,9 +1486,10 @@ function login(){
 
     }else{
 
-        $("loginError")
-            .textContent =
+        loginError.textContent =
             "Senha incorreta.";
+
+        passwordInput.focus();
 
     }
 
@@ -1491,50 +1497,71 @@ function login(){
 
 
 
-/* ==================================================
+/* =========================================================
+   ENTER NO CAMPO DE SENHA
+========================================================= */
+
+passwordInput.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key ===
+            "Enter"
+        ){
+
+            event.preventDefault();
+
+            login();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   BOTÃO LOGIN
+========================================================= */
+
+loginButton.addEventListener(
+    "click",
+    function(){
+
+        login();
+
+    }
+);
+
+
+
+/* =========================================================
    LOGOUT
-================================================== */
+========================================================= */
 
-function logout(){
+logoutButton.addEventListener(
+    "click",
+    function(){
 
-    sessionStorage.removeItem(
-        SESSION_KEY
-    );
-
-
-    location.reload();
-
-}
-
-
-
-/* ==================================================
-   SITE
-================================================== */
-
-function goToSite(){
-
-    window.location.href =
-        "index.html";
-
-}
-
-
-
-/* ==================================================
-   PRODUTOS
-================================================== */
-
-function getProducts(){
-
-    try{
-
-        return JSON.parse(
-            localStorage.getItem(
-                STORAGE_KEY
-            ) || "[]"
+        sessionStorage.removeItem(
+            SESSION_KEY
         );
 
-    }catch(error){
+        location.reload();
 
-  
+    }
+);
+
+
+
+/* =========================================================
+   VER SITE
+========================================================= */
+
+siteButton.addEventListener(
+    "click",
+    function(){
+
+        window.location.href =
+            "index.h
