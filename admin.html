@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,51 +7,96 @@
 <title>PageForge — Painel Administrativo</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
 
-body{
+html,body{
     margin:0;
-    min-height:100vh;
+    padding:0;
+    min-height:100%;
     font-family:Arial,Helvetica,sans-serif;
+    background:#050509;
     color:#fff;
+}
+
+body{
+    min-height:100vh;
     background:
-        radial-gradient(circle at 10% 0%,rgba(124,92,255,.20),transparent 35%),
-        radial-gradient(circle at 90% 0%,rgba(59,130,246,.18),transparent 35%),
+        radial-gradient(circle at 10% 0%,rgba(124,58,237,.22),transparent 35%),
+        radial-gradient(circle at 90% 0%,rgba(37,99,235,.20),transparent 35%),
         #050509;
 }
 
-button,
-input,
-textarea,
-select{
-    font-family:inherit;
-}
-
-button{
-    cursor:pointer;
-}
+/* =========================
+   GERAL
+========================= */
 
 .hidden{
     display:none !important;
 }
 
-/* HEADER */
+button{
+    border:0;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:13px 14px;
+    border-radius:10px;
+    border:1px solid #29293d;
+    background:#090911;
+    color:#fff;
+    outline:none;
+    font-size:14px;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#7c3aed;
+    box-shadow:0 0 0 3px rgba(124,58,237,.12);
+}
+
+textarea{
+    min-height:110px;
+    resize:vertical;
+}
+
+label{
+    display:block;
+    margin:15px 0 7px;
+    color:#a9a9bd;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* =========================
+   HEADER
+========================= */
 
 header{
-    height:70px;
+    height:65px;
+    padding:0 6%;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:0 6%;
-    border-bottom:1px solid rgba(255,255,255,.08);
-    background:rgba(5,5,9,.92);
+
+    background:rgba(5,5,9,.90);
+    border-bottom:1px solid #191923;
+
+    position:sticky;
+    top:0;
+    z-index:10;
+    backdrop-filter:blur(15px);
 }
 
 .logo{
-    font-size:23px;
+    font-size:22px;
     font-weight:900;
 }
 
@@ -60,209 +104,229 @@ header{
     color:#8b5cf6;
 }
 
-/* LOGIN */
+/* =========================
+   BOTÕES
+========================= */
 
-.login-wrapper{
-    min-height:calc(100vh - 70px);
+.btn{
+    padding:12px 17px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-1px);
+    filter:brightness(1.08);
+}
+
+.btn-primary{
+    color:#fff;
+    background:linear-gradient(135deg,#8b5cf6,#2563eb);
+}
+
+.btn-secondary{
+    color:#ddd;
+    background:#151521;
+    border:1px solid #29293d;
+}
+
+.btn-danger{
+    color:#ffb8b8;
+    background:#35151b;
+    border:1px solid #5d202b;
+}
+
+.btn-full{
+    width:100%;
+}
+
+/* =========================
+   LOGIN
+========================= */
+
+#loginScreen{
+    min-height:calc(100vh - 65px);
     display:flex;
-    justify-content:center;
     align-items:center;
-    padding:20px;
+    justify-content:center;
+    padding:25px;
 }
 
 .login-box{
     width:100%;
     max-width:420px;
+
     padding:30px;
-    border-radius:20px;
-    background:linear-gradient(145deg,#12121e,#09090f);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(20,20,34,.96),
+            rgba(8,8,15,.96)
+        );
+
     border:1px solid #25253a;
-    box-shadow:0 25px 80px rgba(0,0,0,.45);
+    border-radius:20px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.55),
+        0 0 50px rgba(124,58,237,.08);
 }
 
-.icon{
-    width:55px;
-    height:55px;
-    border-radius:15px;
+.login-icon{
+    width:48px;
+    height:48px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    background:linear-gradient(135deg,#8b5cf6,#2563eb);
-    font-size:26px;
+
+    border-radius:12px;
+
+    background:linear-gradient(
+        135deg,
+        #8b5cf6,
+        #2563eb
+    );
+
+    font-size:24px;
     margin-bottom:18px;
 }
 
 .login-box h1{
     margin:0 0 8px;
-    font-size:27px;
+    font-size:25px;
 }
 
 .login-box p{
-    color:#85859b;
+    margin:0 0 22px;
+    color:#8e8ea2;
     line-height:1.5;
-    margin:0 0 25px;
-}
-
-label{
-    display:block;
-    color:#a7a7ba;
-    font-size:12px;
-    font-weight:bold;
-    margin-bottom:7px;
-}
-
-input,
-textarea,
-select{
-    width:100%;
-    border:1px solid #29293e;
-    background:#08080e;
-    color:white;
-    padding:13px;
-    border-radius:10px;
-    outline:none;
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-    border-color:#8b5cf6;
-    box-shadow:0 0 0 3px rgba(139,92,246,.12);
-}
-
-.login-field{
-    margin-top:15px;
-}
-
-#loginButton{
-    width:100%;
-    margin-top:18px;
-    padding:14px;
-    border:0;
-    border-radius:10px;
-    color:white;
-    font-weight:800;
-    background:linear-gradient(135deg,#8b5cf6,#2563eb);
-}
-
-#loginButton:active{
-    transform:scale(.98);
 }
 
 .login-error{
     min-height:20px;
     margin-top:10px;
-    color:#ff7070;
+    color:#ff6868;
     font-size:13px;
 }
 
-/* DASHBOARD */
+/* =========================
+   ADMIN
+========================= */
 
-#dashboard{
-    max-width:1200px;
-    margin:auto;
-    padding:35px 20px 70px;
+#adminPanel{
+    max-width:1150px;
+    margin:0 auto;
+    padding:35px 20px 60px;
 }
 
-.dashboard-header{
+.page-title{
     margin-bottom:25px;
 }
 
-.dashboard-header h1{
-    margin:0 0 6px;
-    font-size:32px;
+.page-title h1{
+    margin:0 0 7px;
+    font-size:30px;
 }
 
-.dashboard-header p{
+.page-title p{
     margin:0;
-    color:#85859b;
+    color:#8f8fa3;
 }
 
-/* STATS */
+/* =========================
+   CARDS
+========================= */
+
+.card{
+    padding:22px;
+    margin-bottom:20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #11111d,
+            #090910
+        );
+
+    border:1px solid #222235;
+    border-radius:17px;
+
+    box-shadow:0 15px 45px rgba(0,0,0,.20);
+}
+
+.card h2{
+    margin:0 0 7px;
+}
+
+.description{
+    margin:0 0 20px;
+    color:#8d8da1;
+    font-size:14px;
+}
+
+/* =========================
+   ESTATÍSTICAS
+========================= */
 
 .stats{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:14px;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
     margin-bottom:20px;
 }
 
 .stat{
     padding:20px;
-    border-radius:16px;
-    border:1px solid #24243a;
-    background:linear-gradient(145deg,#11111d,#09090f);
+
+    background:
+        linear-gradient(
+            145deg,
+            #11111d,
+            #090910
+        );
+
+    border:1px solid #222235;
+    border-radius:17px;
 }
 
-.stat-title{
-    color:#85859b;
-    font-size:12px;
-    font-weight:bold;
+.stat-label{
+    color:#8f8fa3;
+    font-size:13px;
 }
 
 .stat-number{
     margin-top:8px;
-    font-size:27px;
+    font-size:30px;
     font-weight:900;
 }
 
-/* GRID */
+/* =========================
+   FORM
+========================= */
 
-.content{
+.form-row{
     display:grid;
-    grid-template-columns:380px 1fr;
-    gap:18px;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
 }
 
-.card{
-    padding:22px;
-    border-radius:18px;
-    border:1px solid #24243a;
-    background:linear-gradient(145deg,#11111d,#09090f);
-}
-
-.card h2{
-    margin:0 0 6px;
-}
-
-.description{
-    color:#85859b;
-    font-size:13px;
-    margin:0 0 18px;
-}
-
-/* FORM */
-
-.field{
-    margin-top:14px;
-}
-
-#saveButton{
-    width:100%;
+.form-actions{
+    display:flex;
+    gap:10px;
     margin-top:18px;
-    padding:14px;
-    border:0;
-    border-radius:10px;
-    color:#fff;
-    font-weight:800;
-    background:linear-gradient(135deg,#8b5cf6,#2563eb);
 }
 
-#cancelButton{
-    width:100%;
-    margin-top:8px;
-    padding:12px;
-    border-radius:10px;
-    border:1px solid #29293e;
-    color:white;
-    background:#151521;
+.form-actions .btn{
+    flex:1;
 }
 
 .message{
     min-height:20px;
     margin-top:12px;
     font-size:13px;
-    font-weight:bold;
 }
 
 .success{
@@ -270,138 +334,140 @@ select:focus{
 }
 
 .error{
-    color:#ff7070;
+    color:#ff6868;
 }
 
-/* PRODUCTS */
+/* =========================
+   PRODUTOS
+========================= */
 
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:14px;
-    margin-top:18px;
+    grid-template-columns:repeat(
+        auto-fill,
+        minmax(250px,1fr)
+    );
+    gap:16px;
 }
 
 .product{
     overflow:hidden;
-    border-radius:14px;
-    border:1px solid #24243a;
-    background:#08080e;
+
+    background:#08080f;
+    border:1px solid #222235;
+    border-radius:15px;
 }
 
-.product img{
+.product-image{
     width:100%;
-    height:170px;
+    height:190px;
+
+    display:block;
+
     object-fit:contain;
     background:#fff;
 }
 
-.product-info{
-    padding:14px;
+.product-content{
+    padding:16px;
 }
 
-.platform{
-    color:#9292a8;
-    font-size:10px;
+.product-platform{
+    color:#8b5cf6;
+    font-size:11px;
     font-weight:bold;
     text-transform:uppercase;
 }
 
 .product-name{
-    margin:7px 0;
-    font-weight:bold;
+    margin:8px 0;
+    font-size:17px;
+}
+
+.product-category{
+    display:inline-block;
+
+    padding:5px 9px;
+
+    border-radius:20px;
+
+    background:#1a1a2b;
+    color:#aaaac0;
+
+    font-size:11px;
 }
 
 .product-price{
-    margin:9px 0;
-    font-size:19px;
-    font-weight:900;
-}
-
-.category{
-    display:inline-block;
-    padding:5px 8px;
-    border-radius:20px;
-    color:#c4a9ff;
-    background:rgba(139,92,246,.13);
-    font-size:10px;
-}
-
-.sales{
-    color:#4ade80;
-    font-size:12px;
-}
-
-.actions{
-    display:flex;
-    gap:7px;
-    margin-top:13px;
-}
-
-.actions button{
-    flex:1;
-    padding:9px;
-    border-radius:8px;
-    border:1px solid #29293e;
-    background:#151521;
-    color:white;
+    margin:12px 0 5px;
+    font-size:20px;
     font-weight:bold;
 }
 
-.actions .delete{
-    color:#ff7777;
-    border-color:rgba(239,68,68,.3);
+.product-sales{
+    color:#4ade80;
+    font-size:12px;
+    font-weight:bold;
 }
+
+.product-buttons{
+    display:flex;
+    gap:8px;
+    margin-top:14px;
+}
+
+.product-buttons button{
+    flex:1;
+}
+
+/* =========================
+   VAZIO
+========================= */
 
 .empty{
-    grid-column:1/-1;
-    padding:40px 20px;
+    padding:35px 20px;
+
     text-align:center;
-    color:#85859b;
-    border:1px dashed #34344b;
-    border-radius:14px;
+
+    color:#77778b;
+
+    border:1px dashed #303047;
+    border-radius:12px;
 }
 
-/* RESPONSIVO */
+/* =========================
+   RESPONSIVO
+========================= */
 
-@media(max-width:900px){
+@media(max-width:700px){
 
-    .content{
+    .stats{
         grid-template-columns:1fr;
     }
 
-    .stats{
-        grid-template-columns:repeat(2,1fr);
+    .form-row{
+        grid-template-columns:1fr;
     }
 
-}
+    .form-actions{
+        flex-direction:column;
+    }
 
-@media(max-width:600px){
+    .page-title h1{
+        font-size:25px;
+    }
 
     header{
-        padding:0 18px;
+        padding:0 20px;
     }
-
-    #dashboard{
-        padding:25px 12px 60px;
-    }
-
-    .stats{
-        grid-template-columns:1fr;
-    }
-
-    .dashboard-header h1{
-        font-size:26px;
-    }
-
 }
-
 </style>
 </head>
 
-
 <body>
 
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -411,15 +477,9 @@ select:focus{
 
     <button
         id="logoutButton"
-        class="hidden"
-        style="
-            padding:10px 15px;
-            border-radius:9px;
-            border:1px solid #3a2530;
-            background:#171016;
-            color:#ff8585;
-            font-weight:bold;
-        "
+        class="btn btn-secondary hidden"
+        type="button"
+        onclick="logout()"
     >
         Sair
     </button>
@@ -427,55 +487,50 @@ select:focus{
 </header>
 
 
-
-<!-- =====================================================
+<!-- =========================
      LOGIN
-====================================================== -->
+========================= -->
 
-<section
-    id="loginScreen"
-    class="login-wrapper"
->
+<section id="loginScreen">
 
     <div class="login-box">
 
-        <div class="icon">
+        <div class="login-icon">
             ⚡
         </div>
 
-        <h1>
-            Painel administrativo
-        </h1>
+        <h1>Painel administrativo</h1>
 
         <p>
-            Acesse o painel do PageForge
-            para administrar seus produtos e ofertas.
+            Acesse o painel do PageForge para
+            administrar seus produtos e ofertas.
         </p>
 
+        <label for="password">
+            SENHA
+        </label>
 
-        <div class="login-field">
-
-            <label for="password">
-                SENHA
-            </label>
-
-            <input
-                id="password"
-                type="password"
-                placeholder="Digite sua senha"
-                autocomplete="off"
-            >
-
-        </div>
-
+        <input
+            id="password"
+            type="password"
+            placeholder="Digite sua senha"
+            autocomplete="current-password"
+            onkeydown="
+                if(event.key === 'Enter'){
+                    login();
+                }
+            "
+        >
 
         <button
             id="loginButton"
             type="button"
+            class="btn btn-primary btn-full"
+            style="margin-top:12px"
+            onclick="login()"
         >
             Entrar no painel
         </button>
-
 
         <div
             id="loginError"
@@ -487,37 +542,36 @@ select:focus{
 </section>
 
 
+<!-- =========================
+     PAINEL
+========================= -->
 
-<!-- =====================================================
-     DASHBOARD
-====================================================== -->
-
-<main
-    id="dashboard"
+<section
+    id="adminPanel"
     class="hidden"
 >
 
-    <div class="dashboard-header">
+    <div class="page-title">
 
         <h1>
-            Dashboard
+            Painel administrativo
         </h1>
 
         <p>
-            Gerencie seus produtos e ofertas.
+            Gerencie seus produtos e ofertas do PageForge.
         </p>
 
     </div>
 
 
-    <!-- STATS -->
+    <!-- ESTATÍSTICAS -->
 
     <div class="stats">
 
         <div class="stat">
 
-            <div class="stat-title">
-                PRODUTOS
+            <div class="stat-label">
+                Produtos cadastrados
             </div>
 
             <div
@@ -532,8 +586,8 @@ select:focus{
 
         <div class="stat">
 
-            <div class="stat-title">
-                VENDAS
+            <div class="stat-label">
+                Vendas registradas
             </div>
 
             <div
@@ -548,8 +602,8 @@ select:focus{
 
         <div class="stat">
 
-            <div class="stat-title">
-                CATEGORIAS
+            <div class="stat-label">
+                Categorias
             </div>
 
             <div
@@ -561,67 +615,49 @@ select:focus{
 
         </div>
 
-
-        <div class="stat">
-
-            <div class="stat-title">
-                PREÇO MÉDIO
-            </div>
-
-            <div
-                id="averagePrice"
-                class="stat-number"
-            >
-                R$ 0,00
-            </div>
-
-        </div>
-
     </div>
 
 
+    <!-- CADASTRO -->
 
-    <div class="content">
+    <div class="card">
 
+        <h2 id="formTitle">
+            Cadastrar produto
+        </h2>
 
-        <!-- FORM -->
-
-        <section class="card">
-
-            <h2 id="formTitle">
-                Novo produto
-            </h2>
-
-            <p class="description">
-                Cadastre uma nova oferta.
-            </p>
+        <p class="description">
+            Adicione um produto para aparecer no painel.
+        </p>
 
 
-            <div class="field">
+        <div class="form-row">
 
-                <label>
-                    PLATAFORMA
+            <div>
+
+                <label for="platform">
+                    Loja
                 </label>
 
                 <select id="platform">
 
-                    <option>
+                    <option value="Mercado Livre">
                         Mercado Livre
                     </option>
 
-                    <option>
+                    <option value="Shopee">
                         Shopee
                     </option>
 
-                    <option>
+                    <option value="Amazon">
                         Amazon
                     </option>
 
-                    <option>
+                    <option value="SHEIN">
                         SHEIN
                     </option>
 
-                    <option>
+                    <option value="Outra">
                         Outra
                     </option>
 
@@ -630,94 +666,66 @@ select:focus{
             </div>
 
 
-            <div class="field">
+            <div>
 
-                <label>
-                    CATEGORIA
+                <label for="category">
+                    Categoria
                 </label>
 
                 <input
                     id="category"
-                    placeholder="Ex.: Beleza"
+                    type="text"
+                    placeholder="Ex.: Celular, Casa, Beleza"
                 >
 
             </div>
 
-
-            <div class="field">
-
-                <label>
-                    NOME DO PRODUTO
-                </label>
-
-                <input
-                    id="name"
-                    placeholder="Nome do produto"
-                >
-
-            </div>
+        </div>
 
 
-            <div class="field">
+        <label for="name">
+            Nome do produto
+        </label>
 
-                <label>
-                    IMAGEM
-                </label>
-
-                <input
-                    id="image"
-                    placeholder="URL da imagem"
-                >
-
-            </div>
+        <input
+            id="name"
+            type="text"
+            placeholder="Nome do produto"
+        >
 
 
-            <div class="field">
+        <label for="image">
+            Imagem do produto
+        </label>
 
-                <label>
-                    PREÇO
+        <input
+            id="image"
+            type="url"
+            placeholder="Cole o link da imagem"
+        >
+
+
+        <div class="form-row">
+
+            <div>
+
+                <label for="price">
+                    Preço
                 </label>
 
                 <input
                     id="price"
-                    placeholder="R$ 49,90"
+                    type="text"
+                    placeholder="Ex.: R$ 49,90"
                 >
 
             </div>
 
 
-            <div class="field">
+            <div>
 
-                <label>
-                    DESCRIÇÃO
-                </label>
-
-                <textarea
-                    id="description"
-                    placeholder="Descrição do produto"
-                ></textarea>
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    LINK DE AFILIADO
-                </label>
-
-                <input
-                    id="link"
-                    placeholder="https://..."
-                >
-
-            </div>
-
-
-            <div class="field">
-
-                <label>
-                    VENDAS
+                <label for="sales">
+                    Vendas registradas
                 </label>
 
                 <input
@@ -729,64 +737,88 @@ select:focus{
 
             </div>
 
+        </div>
+
+
+        <label for="description">
+            Descrição
+        </label>
+
+        <textarea
+            id="description"
+            placeholder="Descrição do produto"
+        ></textarea>
+
+
+        <label for="link">
+            Link do produto / afiliado
+        </label>
+
+        <input
+            id="link"
+            type="url"
+            placeholder="Cole seu link de afiliado"
+        >
+
+
+        <div class="form-actions">
 
             <button
                 id="saveButton"
                 type="button"
+                class="btn btn-primary"
+                onclick="saveProduct()"
             >
                 Adicionar produto
             </button>
 
-
             <button
                 id="cancelButton"
                 type="button"
-                class="hidden"
+                class="btn btn-secondary hidden"
+                onclick="cancelEdit()"
             >
                 Cancelar edição
             </button>
 
-
-            <div
-                id="message"
-                class="message"
-            ></div>
-
-        </section>
+        </div>
 
 
-
-        <!-- PRODUCTS -->
-
-        <section class="card">
-
-            <h2>
-                Produtos cadastrados
-            </h2>
-
-            <p class="description">
-                Seus produtos aparecerão aqui.
-            </p>
-
-
-            <div
-                id="products"
-                class="products"
-            ></div>
-
-        </section>
+        <div
+            id="message"
+            class="message"
+        ></div>
 
     </div>
 
-</main>
 
+    <!-- PRODUTOS -->
+
+    <div class="card">
+
+        <h2>
+            Produtos cadastrados
+        </h2>
+
+        <p class="description">
+            Todos os produtos adicionados ao PageForge.
+        </p>
+
+        <div
+            id="products"
+            class="products"
+        ></div>
+
+    </div>
+
+</section>
 
 
 <script>
 
-/* =====================================================
+/* ==================================================
    CONFIGURAÇÃO
-====================================================== */
+================================================== */
 
 const ADMIN_PASSWORD = "199119122023";
 
@@ -797,22 +829,18 @@ const SESSION_KEY = "pageforge_admin";
 let editingId = null;
 
 
-
-/* =====================================================
+/* ==================================================
    ELEMENTOS
-====================================================== */
+================================================== */
 
 const loginScreen =
     document.getElementById("loginScreen");
 
-const dashboard =
-    document.getElementById("dashboard");
+const adminPanel =
+    document.getElementById("adminPanel");
 
 const passwordInput =
     document.getElementById("password");
-
-const loginButton =
-    document.getElementById("loginButton");
 
 const loginError =
     document.getElementById("loginError");
@@ -820,149 +848,153 @@ const loginError =
 const logoutButton =
     document.getElementById("logoutButton");
 
+const productsArea =
+    document.getElementById("products");
+
+const totalProducts =
+    document.getElementById("totalProducts");
+
+const totalSales =
+    document.getElementById("totalSales");
+
+const totalCategories =
+    document.getElementById("totalCategories");
+
+const formTitle =
+    document.getElementById("formTitle");
+
 const saveButton =
     document.getElementById("saveButton");
 
 const cancelButton =
     document.getElementById("cancelButton");
 
+const message =
+    document.getElementById("message");
 
 
-/* =====================================================
-   FUNÇÃO PRINCIPAL DE LOGIN
-====================================================== */
+/* ==================================================
+   LOGIN
+================================================== */
 
-function fazerLogin(){
+function login(){
 
-    const senha =
+    const password =
         passwordInput.value.trim();
 
+    if(password === ADMIN_PASSWORD){
 
-    /*
-       TESTE DA SENHA
-    */
+        sessionStorage.setItem(
+            SESSION_KEY,
+            "true"
+        );
 
-    if(
-        senha !== ADMIN_PASSWORD
-    ){
+        loginError.textContent = "";
 
-        loginError.textContent =
-            "Senha incorreta.";
+        loginScreen.classList.add(
+            "hidden"
+        );
 
-        passwordInput.focus();
+        adminPanel.classList.remove(
+            "hidden"
+        );
+
+        logoutButton.classList.remove(
+            "hidden"
+        );
+
+        passwordInput.value = "";
+
+        renderProducts();
 
         return;
-
     }
 
+    loginError.textContent =
+        "Senha incorreta.";
 
-    /*
-       SALVA A SESSÃO
-    */
-
-    sessionStorage.setItem(
-        SESSION_KEY,
-        "true"
-    );
-
-
-    /*
-       ESCONDE LOGIN
-    */
-
-    loginScreen.classList.add(
-        "hidden"
-    );
-
-
-    /*
-       MOSTRA DASHBOARD
-    */
-
-    dashboard.classList.remove(
-        "hidden"
-    );
-
-
-    /*
-       MOSTRA BOTÃO SAIR
-    */
-
-    logoutButton.classList.remove(
-        "hidden"
-    );
-
-
-    /*
-       LIMPA ERRO
-    */
-
-    loginError.textContent = "";
-
-    passwordInput.value = "";
-
-
-    /*
-       CARREGA PRODUTOS
-    */
-
-    renderProducts();
-
+    passwordInput.focus();
 }
 
 
-
-/* =====================================================
-   BOTÃO DE LOGIN
-====================================================== */
-
-loginButton.onclick = function(){
-
-    fazerLogin();
-
-};
-
-
-
-/* =====================================================
-   ENTER NA SENHA
-====================================================== */
-
-passwordInput.onkeydown = function(event){
-
-    if(
-        event.key === "Enter"
-    ){
-
-        event.preventDefault();
-
-        fazerLogin();
-
-    }
-
-};
-
-
-
-/* =====================================================
+/* ==================================================
    LOGOUT
-====================================================== */
+================================================== */
 
-logoutButton.onclick = function(){
+function logout(){
 
     sessionStorage.removeItem(
         SESSION_KEY
     );
 
-    location.reload();
+    adminPanel.classList.add(
+        "hidden"
+    );
 
-};
+    logoutButton.classList.add(
+        "hidden"
+    );
+
+    loginScreen.classList.remove(
+        "hidden"
+    );
+
+    passwordInput.value = "";
+
+    loginError.textContent = "";
+
+    passwordInput.focus();
+}
 
 
+/* ==================================================
+   VERIFICAR SESSÃO
+================================================== */
 
-/* =====================================================
-   PRODUTOS
-====================================================== */
+function checkLogin(){
+
+    const logged =
+        sessionStorage.getItem(
+            SESSION_KEY
+        );
+
+    if(logged === "true"){
+
+        loginScreen.classList.add(
+            "hidden"
+        );
+
+        adminPanel.classList.remove(
+            "hidden"
+        );
+
+        logoutButton.classList.remove(
+            "hidden"
+        );
+
+        renderProducts();
+
+    }else{
+
+        loginScreen.classList.remove(
+            "hidden"
+        );
+
+        adminPanel.classList.add(
+            "hidden"
+        );
+
+        logoutButton.classList.add(
+            "hidden"
+        );
+
+    }
+}
+
+
+/* ==================================================
+   PEGAR PRODUTOS
+================================================== */
 
 function getProducts(){
 
@@ -973,308 +1005,240 @@ function getProducts(){
                 PRODUCTS_KEY
             );
 
-
-        if(
-            !data
-        ){
-
+        if(!data){
             return [];
-
         }
-
 
         const products =
             JSON.parse(data);
 
-
-        if(
-            !Array.isArray(products)
-        ){
-
+        if(!Array.isArray(products)){
             return [];
-
         }
-
 
         return products;
 
     }catch(error){
 
+        console.error(
+            "Erro ao carregar produtos:",
+            error
+        );
+
         return [];
-
     }
-
 }
 
 
-
-/* =====================================================
+/* ==================================================
    SALVAR PRODUTOS
-====================================================== */
+================================================== */
 
 function saveProducts(products){
 
-    localStorage.setItem(
-        PRODUCTS_KEY,
-        JSON.stringify(products)
-    );
+    try{
 
-}
+        localStorage.setItem(
+            PRODUCTS_KEY,
+            JSON.stringify(products)
+        );
 
+        return true;
 
+    }catch(error){
 
-/* =====================================================
-   ESCAPAR HTML
-====================================================== */
+        console.error(
+            "Erro ao salvar produtos:",
+            error
+        );
 
-function esc(text){
+        showMessage(
+            "Não foi possível salvar os produtos.",
+            false
+        );
 
-    return String(
-        text ?? ""
-    ).replace(
-        /[&<>"']/g,
-        function(char){
-
-            return {
-
-                "&":"&amp;",
-                "<":"&lt;",
-                ">":"&gt;",
-                '"':"&quot;",
-                "'":"&#039;"
-
-            }[char];
-
-        }
-    );
-
-}
-
-
-
-/* =====================================================
-   PREÇO
-====================================================== */
-
-function priceNumber(value){
-
-    if(!value){
-
-        return 0;
-
+        return false;
     }
+}
 
 
-    let text =
-        String(value)
-            .replace(
-                /R\$/gi,
-                ""
-            )
-            .trim();
+/* ==================================================
+   SALVAR PRODUTO
+================================================== */
+
+function saveProduct(){
+
+    const platform =
+        document.getElementById(
+            "platform"
+        ).value;
+
+    const category =
+        document.getElementById(
+            "category"
+        ).value.trim();
+
+    const name =
+        document.getElementById(
+            "name"
+        ).value.trim();
+
+    const image =
+        document.getElementById(
+            "image"
+        ).value.trim();
+
+    const price =
+        document.getElementById(
+            "price"
+        ).value.trim();
+
+    const description =
+        document.getElementById(
+            "description"
+        ).value.trim();
+
+    const link =
+        document.getElementById(
+            "link"
+        ).value.trim();
+
+    const sales =
+        Number(
+            document.getElementById(
+                "sales"
+            ).value
+        ) || 0;
 
 
     if(
-        text.includes(",")
+        !name ||
+        !image ||
+        !price ||
+        !link
     ){
 
-        text =
-            text.replace(
-                /\./g,
-                ""
-            );
+        showMessage(
+            "Preencha nome, imagem, preço e link.",
+            false
+        );
 
-        text =
-            text.replace(
-                ",",
-                "."
-            );
-
+        return;
     }
 
 
-    text =
-        text.replace(
-            /[^0-9.-]/g,
-            ""
-        );
+    const products =
+        getProducts();
 
 
-    const number =
-        Number(text);
+    /* =========================
+       EDITAR
+    ========================= */
 
+    if(editingId !== null){
 
-    return Number.isFinite(number)
-        ? number
-        : 0;
+        const index =
+            products.findIndex(
+                product =>
+                    product.id === editingId
+            );
 
-}
+        if(index === -1){
 
+            showMessage(
+                "Produto não encontrado.",
+                false
+            );
 
-
-/* =====================================================
-   DINHEIRO
-====================================================== */
-
-function money(value){
-
-    return Number(
-        value || 0
-    ).toLocaleString(
-        "pt-BR",
-        {
-            style:"currency",
-            currency:"BRL"
+            return;
         }
-    );
-
-}
 
 
+        products[index] = {
 
-/* =====================================================
-   MENSAGEM
-====================================================== */
+            id: editingId,
 
-function showMessage(
-    text,
-    success
-){
+            platform: platform,
 
-    const message =
-        document.getElementById(
-            "message"
+            category: category,
+
+            name: name,
+
+            image: image,
+
+            price: price,
+
+            description: description,
+
+            link: link,
+
+            sales: sales
+
+        };
+
+
+        if(
+            !saveProducts(products)
+        ){
+            return;
+        }
+
+
+        editingId = null;
+
+        resetForm();
+
+        renderProducts();
+
+        showMessage(
+            "Produto atualizado com sucesso!",
+            true
         );
 
-
-    message.textContent =
-        text;
-
-
-    message.className =
-        success
-            ? "message success"
-            : "message error";
+        return;
+    }
 
 
-    setTimeout(
-        function(){
-
-            message.textContent = "";
-
-            message.className =
-                "message";
-
-        },
-        3000
-    );
-
-}
-
-
-
-/* =====================================================
-   LIMPAR FORMULÁRIO
-====================================================== */
-
-function clearForm(){
-
-    document.getElementById(
-        "platform"
-    ).value =
-        "Mercado Livre";
-
-    document.getElementById(
-        "category"
-    ).value = "";
-
-    document.getElementById(
-        "name"
-    ).value = "";
-
-    document.getElementById(
-        "image"
-    ).value = "";
-
-    document.getElementById(
-        "price"
-    ).value = "";
-
-    document.getElementById(
-        "description"
-    ).value = "";
-
-    document.getElementById(
-        "link"
-    ).value = "";
-
-    document.getElementById(
-        "sales"
-    ).value = "0";
-
-}
-
-
-
-/* =====================================================
-   SALVAR PRODUTO
-====================================================== */
-
-saveButton.onclick = function(){
+    /* =========================
+       NOVO PRODUTO
+    ========================= */
 
     const product = {
 
-        platform:
-            document.getElementById(
-                "platform"
-            ).value,
+        id: Date.now(),
 
-        category:
-            document.getElementById(
-                "category"
-            ).value.trim(),
+        platform: platform,
 
-        name:
-            document.getElementById(
-                "name"
-            ).value.trim(),
+        category: category,
 
-        image:
-            document.getElementById(
-                "image"
-            ).value.trim(),
+        name: name,
 
-        price:
-            document.getElementById(
-                "price"
-            ).value.trim(),
+        image: image,
 
-        description:
-            document.getElementById(
-                "description"
-            ).value.trim(),
+        price: price,
 
-        link:
-            document.getElementById(
-                "link"
-            ).value.trim(),
+        description: description,
 
-        sales:
-            Number(
-                document.getElementById(
-                    "sales"
-                ).value
-            ) || 0
+        link: link,
+
+        sales: sales
 
     };
 
 
-    if(
-        !product.name ||
-        !product.image ||
-        !product.price ||
-        !product.link
-    ){
+    products.push(product);
 
-        showMessage(
-            "Preencha nome, imagem, 
+
+    if(
+        !saveProducts(products)
+    ){
+        return;
+    }
+
+
+    resetForm();
+
+    renderProducts();
+
+    showMessage(
+        "P
