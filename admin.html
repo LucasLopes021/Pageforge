@@ -7,34 +7,38 @@
 <title>PageForge — Painel Administrativo</title>
 
 <style>
+
 *{
     box-sizing:border-box;
 }
 
-html,body{
+html,
+body{
     margin:0;
     padding:0;
     min-height:100%;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#050509;
-    color:#fff;
 }
 
 body{
-    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
     background:
-        radial-gradient(circle at 10% 0%,rgba(124,58,237,.22),transparent 35%),
-        radial-gradient(circle at 90% 0%,rgba(37,99,235,.20),transparent 35%),
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(124,58,237,.22),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(37,99,235,.20),
+            transparent 35%
+        ),
         #050509;
+    color:#fff;
 }
 
 /* =========================
    GERAL
 ========================= */
-
-.hidden{
-    display:none !important;
-}
 
 button{
     border:0;
@@ -82,6 +86,7 @@ label{
 header{
     height:65px;
     padding:0 6%;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -92,6 +97,7 @@ header{
     position:sticky;
     top:0;
     z-index:10;
+
     backdrop-filter:blur(15px);
 }
 
@@ -122,98 +128,33 @@ header{
 
 .btn-primary{
     color:#fff;
-    background:linear-gradient(135deg,#8b5cf6,#2563eb);
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #2563eb
+        );
 }
 
 .btn-secondary{
     color:#ddd;
+
     background:#151521;
+
     border:1px solid #29293d;
 }
 
 .btn-danger{
     color:#ffb8b8;
+
     background:#35151b;
+
     border:1px solid #5d202b;
 }
 
-.btn-full{
-    width:100%;
-}
-
 /* =========================
-   LOGIN
-========================= */
-
-#loginScreen{
-    min-height:calc(100vh - 65px);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:25px;
-}
-
-.login-box{
-    width:100%;
-    max-width:420px;
-
-    padding:30px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(20,20,34,.96),
-            rgba(8,8,15,.96)
-        );
-
-    border:1px solid #25253a;
-    border-radius:20px;
-
-    box-shadow:
-        0 25px 80px rgba(0,0,0,.55),
-        0 0 50px rgba(124,58,237,.08);
-}
-
-.login-icon{
-    width:48px;
-    height:48px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border-radius:12px;
-
-    background:linear-gradient(
-        135deg,
-        #8b5cf6,
-        #2563eb
-    );
-
-    font-size:24px;
-    margin-bottom:18px;
-}
-
-.login-box h1{
-    margin:0 0 8px;
-    font-size:25px;
-}
-
-.login-box p{
-    margin:0 0 22px;
-    color:#8e8ea2;
-    line-height:1.5;
-}
-
-.login-error{
-    min-height:20px;
-    margin-top:10px;
-    color:#ff6868;
-    font-size:13px;
-}
-
-/* =========================
-   ADMIN
+   PAINEL
 ========================= */
 
 #adminPanel{
@@ -254,7 +195,8 @@ header{
     border:1px solid #222235;
     border-radius:17px;
 
-    box-shadow:0 15px 45px rgba(0,0,0,.20);
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.20);
 }
 
 .card h2{
@@ -273,7 +215,9 @@ header{
 
 .stats{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:15px;
     margin-bottom:20px;
 }
@@ -304,12 +248,14 @@ header{
 }
 
 /* =========================
-   FORM
+   FORMULÁRIO
 ========================= */
 
 .form-row{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
+
     gap:15px;
 }
 
@@ -343,10 +289,13 @@ header{
 
 .products{
     display:grid;
-    grid-template-columns:repeat(
-        auto-fill,
-        minmax(250px,1fr)
-    );
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(250px,1fr)
+        );
+
     gap:16px;
 }
 
@@ -354,6 +303,7 @@ header{
     overflow:hidden;
 
     background:#08080f;
+
     border:1px solid #222235;
     border-radius:15px;
 }
@@ -365,6 +315,7 @@ header{
     display:block;
 
     object-fit:contain;
+
     background:#fff;
 }
 
@@ -382,6 +333,7 @@ header{
 .product-name{
     margin:8px 0;
     font-size:17px;
+    font-weight:bold;
 }
 
 .product-category{
@@ -431,6 +383,7 @@ header{
     color:#77778b;
 
     border:1px dashed #303047;
+
     border-radius:12px;
 }
 
@@ -439,6 +392,10 @@ header{
 ========================= */
 
 @media(max-width:700px){
+
+    header{
+        padding:0 20px;
+    }
 
     .stats{
         grid-template-columns:1fr;
@@ -456,17 +413,17 @@ header{
         font-size:25px;
     }
 
-    header{
-        padding:0 20px;
-    }
 }
+
 </style>
 </head>
 
+
 <body>
 
+
 <!-- =========================
-     HEADER
+     CABEÇALHO
 ========================= -->
 
 <header>
@@ -475,81 +432,14 @@ header{
         Page<span>Forge</span>
     </div>
 
-    <button
-        id="logoutButton"
-        class="btn btn-secondary hidden"
-        type="button"
-        onclick="logout()"
-    >
-        Sair
-    </button>
-
 </header>
 
 
 <!-- =========================
-     LOGIN
+     PAINEL DIRETO
 ========================= -->
 
-<section id="loginScreen">
-
-    <div class="login-box">
-
-        <div class="login-icon">
-            ⚡
-        </div>
-
-        <h1>Painel administrativo</h1>
-
-        <p>
-            Acesse o painel do PageForge para
-            administrar seus produtos e ofertas.
-        </p>
-
-        <label for="password">
-            SENHA
-        </label>
-
-        <input
-            id="password"
-            type="password"
-            placeholder="Digite sua senha"
-            autocomplete="current-password"
-            onkeydown="
-                if(event.key === 'Enter'){
-                    login();
-                }
-            "
-        >
-
-        <button
-            id="loginButton"
-            type="button"
-            class="btn btn-primary btn-full"
-            style="margin-top:12px"
-            onclick="login()"
-        >
-            Entrar no painel
-        </button>
-
-        <div
-            id="loginError"
-            class="login-error"
-        ></div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     PAINEL
-========================= -->
-
-<section
-    id="adminPanel"
-    class="hidden"
->
+<section id="adminPanel">
 
     <div class="page-title">
 
@@ -564,7 +454,9 @@ header{
     </div>
 
 
-    <!-- ESTATÍSTICAS -->
+    <!-- =========================
+         ESTATÍSTICAS
+    ========================= -->
 
     <div class="stats">
 
@@ -618,7 +510,9 @@ header{
     </div>
 
 
-    <!-- CADASTRO -->
+    <!-- =========================
+         CADASTRAR PRODUTO
+    ========================= -->
 
     <div class="card">
 
@@ -772,11 +666,13 @@ header{
                 Adicionar produto
             </button>
 
+
             <button
                 id="cancelButton"
                 type="button"
-                class="btn btn-secondary hidden"
+                class="btn btn-secondary"
                 onclick="cancelEdit()"
+                style="display:none;"
             >
                 Cancelar edição
             </button>
@@ -792,7 +688,9 @@ header{
     </div>
 
 
-    <!-- PRODUTOS -->
+    <!-- =========================
+         PRODUTOS
+    ========================= -->
 
     <div class="card">
 
@@ -820,11 +718,8 @@ header{
    CONFIGURAÇÃO
 ================================================== */
 
-const ADMIN_PASSWORD = "199119122023";
-
-const PRODUCTS_KEY = "pageforge_products";
-
-const SESSION_KEY = "pageforge_admin";
+const PRODUCTS_KEY =
+    "pageforge_products";
 
 let editingId = null;
 
@@ -833,163 +728,45 @@ let editingId = null;
    ELEMENTOS
 ================================================== */
 
-const loginScreen =
-    document.getElementById("loginScreen");
-
-const adminPanel =
-    document.getElementById("adminPanel");
-
-const passwordInput =
-    document.getElementById("password");
-
-const loginError =
-    document.getElementById("loginError");
-
-const logoutButton =
-    document.getElementById("logoutButton");
-
 const productsArea =
-    document.getElementById("products");
+    document.getElementById(
+        "products"
+    );
 
 const totalProducts =
-    document.getElementById("totalProducts");
+    document.getElementById(
+        "totalProducts"
+    );
 
 const totalSales =
-    document.getElementById("totalSales");
+    document.getElementById(
+        "totalSales"
+    );
 
 const totalCategories =
-    document.getElementById("totalCategories");
+    document.getElementById(
+        "totalCategories"
+    );
 
 const formTitle =
-    document.getElementById("formTitle");
+    document.getElementById(
+        "formTitle"
+    );
 
 const saveButton =
-    document.getElementById("saveButton");
+    document.getElementById(
+        "saveButton"
+    );
 
 const cancelButton =
-    document.getElementById("cancelButton");
+    document.getElementById(
+        "cancelButton"
+    );
 
 const message =
-    document.getElementById("message");
-
-
-/* ==================================================
-   LOGIN
-================================================== */
-
-function login(){
-
-    const password =
-        passwordInput.value.trim();
-
-    if(password === ADMIN_PASSWORD){
-
-        sessionStorage.setItem(
-            SESSION_KEY,
-            "true"
-        );
-
-        loginError.textContent = "";
-
-        loginScreen.classList.add(
-            "hidden"
-        );
-
-        adminPanel.classList.remove(
-            "hidden"
-        );
-
-        logoutButton.classList.remove(
-            "hidden"
-        );
-
-        passwordInput.value = "";
-
-        renderProducts();
-
-        return;
-    }
-
-    loginError.textContent =
-        "Senha incorreta.";
-
-    passwordInput.focus();
-}
-
-
-/* ==================================================
-   LOGOUT
-================================================== */
-
-function logout(){
-
-    sessionStorage.removeItem(
-        SESSION_KEY
+    document.getElementById(
+        "message"
     );
-
-    adminPanel.classList.add(
-        "hidden"
-    );
-
-    logoutButton.classList.add(
-        "hidden"
-    );
-
-    loginScreen.classList.remove(
-        "hidden"
-    );
-
-    passwordInput.value = "";
-
-    loginError.textContent = "";
-
-    passwordInput.focus();
-}
-
-
-/* ==================================================
-   VERIFICAR SESSÃO
-================================================== */
-
-function checkLogin(){
-
-    const logged =
-        sessionStorage.getItem(
-            SESSION_KEY
-        );
-
-    if(logged === "true"){
-
-        loginScreen.classList.add(
-            "hidden"
-        );
-
-        adminPanel.classList.remove(
-            "hidden"
-        );
-
-        logoutButton.classList.remove(
-            "hidden"
-        );
-
-        renderProducts();
-
-    }else{
-
-        loginScreen.classList.remove(
-            "hidden"
-        );
-
-        adminPanel.classList.add(
-            "hidden"
-        );
-
-        logoutButton.classList.add(
-            "hidden"
-        );
-
-    }
-}
 
 
 /* ==================================================
@@ -1034,7 +811,9 @@ function getProducts(){
    SALVAR PRODUTOS
 ================================================== */
 
-function saveProducts(products){
+function saveProducts(
+    products
+){
 
     try{
 
@@ -1048,12 +827,12 @@ function saveProducts(products){
     }catch(error){
 
         console.error(
-            "Erro ao salvar produtos:",
+            "Erro ao salvar:",
             error
         );
 
         showMessage(
-            "Não foi possível salvar os produtos.",
+            "Não foi possível salvar o produto.",
             false
         );
 
@@ -1063,7 +842,7 @@ function saveProducts(products){
 
 
 /* ==================================================
-   SALVAR PRODUTO
+   ADICIONAR / EDITAR
 ================================================== */
 
 function saveProduct(){
@@ -1139,9 +918,13 @@ function saveProduct(){
 
         const index =
             products.findIndex(
-                product =>
-                    product.id === editingId
+                function(product){
+
+                    return product.id === editingId;
+
+                }
             );
+
 
         if(index === -1){
 
@@ -1156,30 +939,33 @@ function saveProduct(){
 
         products[index] = {
 
-            id: editingId,
+            id:editingId,
 
-            platform: platform,
+            platform:platform,
 
-            category: category,
+            category:category,
 
-            name: name,
+            name:name,
 
-            image: image,
+            image:image,
 
-            price: price,
+            price:price,
 
-            description: description,
+            description:description,
 
-            link: link,
+            link:link,
 
-            sales: sales
+            sales:sales
 
         };
 
 
         if(
-            !saveProducts(products)
+            !saveProducts(
+                products
+            )
         ){
+
             return;
         }
 
@@ -1205,33 +991,38 @@ function saveProduct(){
 
     const product = {
 
-        id: Date.now(),
+        id:Date.now(),
 
-        platform: platform,
+        platform:platform,
 
-        category: category,
+        category:category,
 
-        name: name,
+        name:name,
 
-        image: image,
+        image:image,
 
-        price: price,
+        price:price,
 
-        description: description,
+        description:description,
 
-        link: link,
+        link:link,
 
-        sales: sales
+        sales:sales
 
     };
 
 
-    products.push(product);
+    products.push(
+        product
+    );
 
 
     if(
-        !saveProducts(products)
+        !saveProducts(
+            products
+        )
     ){
+
         return;
     }
 
@@ -1241,4 +1032,286 @@ function saveProduct(){
     renderProducts();
 
     showMessage(
-        "P
+        "Produto adicionado com sucesso!",
+        true
+    );
+}
+
+
+/* ==================================================
+   EDITAR PRODUTO
+================================================== */
+
+function editProduct(
+    id
+){
+
+    const products =
+        getProducts();
+
+
+    const product =
+        products.find(
+            function(item){
+
+                return item.id === id;
+
+            }
+        );
+
+
+    if(!product){
+        return;
+    }
+
+
+    document.getElementById(
+        "platform"
+    ).value =
+        product.platform ||
+        "Mercado Livre";
+
+
+    document.getElementById(
+        "category"
+    ).value =
+        product.category || "";
+
+
+    document.getElementById(
+        "name"
+    ).value =
+        product.name || "";
+
+
+    document.getElementById(
+        "image"
+    ).value =
+        product.image || "";
+
+
+    document.getElementById(
+        "price"
+    ).value =
+        product.price || "";
+
+
+    document.getElementById(
+        "description"
+    ).value =
+        product.description || "";
+
+
+    document.getElementById(
+        "link"
+    ).value =
+        product.link || "";
+
+
+    document.getElementById(
+        "sales"
+    ).value =
+        product.sales || 0;
+
+
+    editingId =
+        id;
+
+
+    formTitle.textContent =
+        "Editar produto";
+
+
+    saveButton.textContent =
+        "Salvar alterações";
+
+
+    cancelButton.style.display =
+        "block";
+
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+}
+
+
+/* ==================================================
+   CANCELAR EDIÇÃO
+================================================== */
+
+function cancelEdit(){
+
+    editingId =
+        null;
+
+
+    resetForm();
+
+
+    formTitle.textContent =
+        "Cadastrar produto";
+
+
+    saveButton.textContent =
+        "Adicionar produto";
+
+
+    cancelButton.style.display =
+        "none";
+}
+
+
+/* ==================================================
+   EXCLUIR
+================================================== */
+
+function deleteProduct(
+    id
+){
+
+    const confirmed =
+        confirm(
+            "Tem certeza que deseja excluir este produto?"
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    const products =
+        getProducts().filter(
+            function(product){
+
+                return product.id !== id;
+
+            }
+        );
+
+
+    if(
+        !saveProducts(
+            products
+        )
+    ){
+
+        return;
+    }
+
+
+    renderProducts();
+
+
+    showMessage(
+        "Produto excluído.",
+        true
+    );
+}
+
+
+/* ==================================================
+   RENDERIZAR
+================================================== */
+
+function renderProducts(){
+
+    const products =
+        getProducts();
+
+
+    productsArea.innerHTML =
+        "";
+
+
+    /* ESTATÍSTICAS */
+
+    totalProducts.textContent =
+        products.length;
+
+
+    const sales =
+        products.reduce(
+            function(total,product){
+
+                return total +
+                    (
+                        Number(
+                            product.sales
+                        ) || 0
+                    );
+
+            },
+            0
+        );
+
+
+    totalSales.textContent =
+        sales;
+
+
+    const categories =
+        new Set(
+            products
+                .map(
+                    function(product){
+
+                        return product.category;
+
+                    }
+                )
+                .filter(Boolean)
+        );
+
+
+    totalCategories.textContent =
+        categories.size;
+
+
+    /* VAZIO */
+
+    if(
+        products.length === 0
+    ){
+
+        productsArea.innerHTML = `
+
+            <div class="empty">
+
+                Nenhum produto cadastrado ainda.
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    /* PRODUTOS */
+
+    products.forEach(
+        function(product){
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "product";
+
+
+            const image =
+                escapeHTML(
+                    product.image
+                );
+
+
+       
